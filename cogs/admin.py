@@ -20,12 +20,14 @@ class Admin(commands.Cog):
 
 # {{{ Clear
     @commands.command()
+    @commands.has_permissions(manage_messages=True)
     async def clear(self, ctx, amount=5):
         await ctx.channel.purge(limit=amount+1)
 # }}}
 
 # {{{ Kick
     @commands.command()
+    @commands.has_permissions(kick_members=True)
     async def kick(self, ctx, member: discord.Member, *, reason=None):
         await member.kick(reason=reason)
         if reason is None:
@@ -36,6 +38,7 @@ class Admin(commands.Cog):
 
 # {{{ Ban
     @commands.command()
+    @commands.has_permissions(ban_members=True)
     async def ban(self, ctx, member: discord.Member, *, reason=None):
         await member.ban(reason=reason)
         if reason is None:
@@ -46,6 +49,7 @@ class Admin(commands.Cog):
 
 # {{{ Unban
     @commands.command()
+    @commands.has_permissions(ban_members=True)
     async def unban(self, ctx, member: discord.Member):
         banned_users = await ctx.guild.bans()
         member_name, member_discriminator = member.split('#')
