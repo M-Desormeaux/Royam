@@ -20,7 +20,7 @@ async def load(ctx, extension):
     try:
         bot.load_extension(f'cogs.{extension}')
         await ctx.send('Cog enabled')
-        print(f'> Cog Loaded: {extension}')
+        print(f'> Cog Loaded: {extension}\n')
     except:
         await ctx.send('Cog not found')
 
@@ -47,7 +47,7 @@ async def cycle(ctx):
         for filename in os.listdir('./cogs'):
             if filename.endswith('.py'):
                 bot.load_extension(f'cogs.{filename[:-3]}')
-                await ctx.send(f'> Cog Loaded: {filename[:-3]}')
+                await ctx.send(f'> Cog Loaded: {extension}')
     except:
         pass
     await ctx.send('Cogs Reloaded')
