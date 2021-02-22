@@ -2,7 +2,7 @@ import discord
 import os
 from discord.ext import commands
 
-token = open("token.txt", "r").readline()
+token = open("./token.txt", "r").readline()
 bot = commands.Bot(command_prefix='.')
 
 
@@ -12,7 +12,7 @@ async def on_ready():
     print("Bot ready to interact")
 
 @bot.command()
-    async def ping(self, ctx):
+async def ping(self, ctx):
         await ctx.send('Pong! 🏓')
 
 @bot.command()
