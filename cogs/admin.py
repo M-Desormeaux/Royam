@@ -6,26 +6,11 @@ class Admin(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-# {{{ Hidden On_Ready
-#   @commands.Cog.listener()
-#   async def on_ready(self):
-#       print("=> admin")
-# }}}
-
-# {{{ Ping
-    @commands.command()
-    async def ping(self, ctx):
-        await ctx.send('Pong! 🏓')
-# }}}
-
-# {{{ Clear
     @commands.command()
     @commands.has_permissions(manage_messages=True)
     async def clear(self, ctx, amount=5):
         await ctx.channel.purge(limit=amount+1)
-# }}}
 
-# {{{ Kick
     @commands.command()
     @commands.has_permissions(kick_members=True)
     async def kick(self, ctx, member: discord.Member, *, reason=None):
@@ -34,9 +19,7 @@ class Admin(commands.Cog):
             await ctx.send(f'{member.mention} was kicked')
         else:
             await ctx.send(f'{member.mention} was kicked for {reason}')
-# }}}
 
-# {{{ Ban
     @commands.command()
     @commands.has_permissions(ban_members=True)
     async def ban(self, ctx, member: discord.Member, *, reason=None):
@@ -45,9 +28,7 @@ class Admin(commands.Cog):
             await ctx.send(f'{member.mention} was banned')
         else:
             await ctx.send(f'{member.mention} was banned for {reason}')
-# }}}
 
-# {{{ Unban
     @commands.command()
     @commands.has_permissions(ban_members=True)
     async def unban(self, ctx, member: discord.Member):
@@ -61,7 +42,7 @@ class Admin(commands.Cog):
                 await ctx.guild.unban(user)
                 await ctx.send(f'{user.mention} unbanned')
                 return
-# }}}
+
 
 
 def setup(cog):
