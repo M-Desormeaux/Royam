@@ -47,12 +47,12 @@ async def cycle(ctx):
         for filename in os.listdir('./cogs'):
             if filename.endswith('.py'):
                 bot.load_extension(f'cogs.{filename[:-3]}')
-                await ctx.send(f'> Cog Loaded: {extension}')
+                await ctx.send(f'> Cog Loaded: {filename[:-3]}')
     except:
         pass
     await ctx.send('Cogs Reloaded')
 
-print('\nCogs Loaded:')
+print('\nCogs Loaded:\n')
 for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
         bot.load_extension(f'cogs.{filename[:-3]}')
